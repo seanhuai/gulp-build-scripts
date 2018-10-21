@@ -5,6 +5,7 @@ const gulp = require('gulp'),
   rename = require('gulp-rename'),
   sass = require('gulp-ruby-sass'),
   sourcemaps = require('gulp-sourcemaps'),
+  connect = require('gulp-connect'),
   config = require('../config').sass;
   
 const devProcessors = [autoprefixer];
@@ -14,7 +15,8 @@ gulp.task('sass',() => {
   return sass(config.src, { noCache: true, sourcemap: true})
     .pipe(sourcemaps.write())
     .pipe(postcss(devProcessors))
-    .pipe(gulp.dest(config.dest));
+    .pipe(gulp.dest(config.dest))
+    .pipe(connect.reload());
 }); 
 
 gulp.task('sass:production',() => {

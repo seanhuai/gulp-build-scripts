@@ -4,6 +4,7 @@ const gulp = require('gulp'),
   atImport = require('postcss-import'),
   rename = require('gulp-rename'),
   cssnano  = require('cssnano'),
+  connect = require('gulp-connect'),
   config = require('../config').css;
 
 const devProcessors = [autoprefixer, atImport];
@@ -12,7 +13,8 @@ const prodProcessors = [...devProcessors, cssnano];
 gulp.task('css',() => {
   return gulp.src(config.src)
     .pipe(postcss(devProcessors))
-    .pipe(gulp.dest(config.dest));
+    .pipe(gulp.dest(config.dest))
+    .pipe(connect.reload());
 });
 
 gulp.task('css:production',() => {

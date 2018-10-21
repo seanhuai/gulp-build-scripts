@@ -5,6 +5,7 @@ const gulp = require('gulp'),
   rename = require('gulp-rename'),
   less = require('gulp-less'),
   sourcemaps = require('gulp-sourcemaps'),
+  connect = require('gulp-connect'),
   config = require('../config').less;
 
 const devProcessors = [autoprefixer];
@@ -16,7 +17,8 @@ gulp.task('less',() => {
     .pipe(less())
     .pipe(sourcemaps.write())
     .pipe(postcss(devProcessors))
-    .pipe(gulp.dest(config.dest));
+    .pipe(gulp.dest(config.dest))
+    .pipe(connect.reload());  
 });
 
 gulp.task('less:production',() => {
