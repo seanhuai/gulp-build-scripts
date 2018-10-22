@@ -32,6 +32,10 @@
 
 修正上一版本的遗留拼写错误
 
+### 2018.10.22
+
+补充 JavaScript 处理工具，更正 ES 模块引入格式
+
 ## 协议 License
 
 此项目遵守 The MIT License。
