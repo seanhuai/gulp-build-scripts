@@ -27,10 +27,7 @@ module.exports = {
   },
   javascript: {
     entry: `${srcAssets}/script/main.js`,
-    dest: `${buildAssets}/script/`,
-    config: {
-      // rollup.js config;
-    }
+    dest: `${buildAssets}/script/`
   },
   watch: {
     html: `${src}/html/**/*.html`,
@@ -39,6 +36,6 @@ module.exports = {
     less: `${srcAssets}/style/**/*.less`,
     sass: `${srcAssets}/style/**/*.scss`,
     // typescript: `${srcAssets}/script/**/*.ts`,
-    javascript: `${srcAssets}/script/**/*.js`
+    javascript: `${srcAssets}/script/**/*.{js, ejs}`
   }
 };

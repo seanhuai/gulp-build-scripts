@@ -3,7 +3,8 @@ const gulp = require('gulp'),
   { uglify } = require('rollup-plugin-uglify'),
   babel = require('rollup-plugin-babel'),
   resolve = require('rollup-plugin-node-resolve'),
-  cjs = require('rollup-plugin-commonjs'),
+  cjs = require('rollup-plugin-commonjs'),  
+  ejs = require('rollup-plugin-ejs'),
   connect = require('gulp-connect'),
   config = require('../config').javascript;
 
@@ -25,7 +26,12 @@ gulp.task('javascript', () => {
     entry: config.entry,
     file: config.dest+'/main.js',
     sourcemap: true,
-    plugins: [resolve(), cjs(), babel()]
+    plugins: [
+      ejs(), 
+      resolve(), 
+      cjs(), 
+      babel()
+    ]
   });
   gulp.src(config.entry).pipe(connect.reload());
 });
@@ -34,5 +40,11 @@ gulp.task('javascript:production', () => jsBuild({
   entry: config.entry,
   file: config.dest+'/main.js',
   sourcemap: false,
-  plugins: [resolve(), cjs(), babel(), uglify()]
+  plugins: [
+    ejs(), 
+    resolve(), 
+    cjs(), 
+    babel(), 
+    uglify()
+  ]
 })); 
